@@ -1,0 +1,1 @@
+[09-Oct-2024 07:58:27 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/afnopasal/public_html/jobs.afnopasal.com/vendor/composer/autoload_static.php on line 1245
