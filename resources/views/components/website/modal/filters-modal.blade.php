@@ -1,18 +1,14 @@
 @props(['jobTypes', 'categories', 'maxSalary', 'currentCurrency'])
 
-<div class="modal fade" id="filtersModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="container show" id="filtersModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div
-        class="modal-dialog  modal-wrapper md:tw-max-w-[352px] tw-mx-0 tw-w-[90%] tw-my-0 tw-absolute tw-top-0 tw-bootom-0 tw-left-0">
+        class="card  md:tw-max-w-[352px] tw-mx-0  tw-my-0 tw-block">
         <div class="modal-content tw-rounded-none tw-relative tw-min-h-screen tw-max-h-screen">
             <div class="tw-h-screen tw-overflow-x-hidden tw-overflow-y-auto tw-pb-24">
 
                 <div class="tw-px-5 tw-pt-5">
                     <div class="tw-flex tw-justify-between items-center">
                         <h2 class="tw-text-[#18191C] tw-text-xl tw-font-medium tw-mb-0">{{ __('filter') }}</h2>
-                        <button type="button" class="tw-p-0 tw-border-0 tw-bg-transparent" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            <x-svg.close-icon />
-                        </button>
                     </div>
                 </div>
                 <div class="tw-p-5">

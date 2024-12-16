@@ -113,14 +113,14 @@
                         </div>
                     </div>
                     <div>
-                        <button type="button"
+                        {{-- <button type="button"
                             class="btn tw-inline-flex gap-3 tw-items-center hover:tw-bg-[#F1F2F4] tw-bg-[#F1F2F4] hover:tw-text-[#18191C] tw-text-[#18191C] tw-border-0"
                             data-bs-toggle="modal" data-bs-target="#filtersModal">
                             <span class="">
                                 <x-svg.filters-icon />
                             </span>
                             <span>{{ __('filter') }}</span>
-                        </button>
+                        </button> --}}
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary tw-inline-block">

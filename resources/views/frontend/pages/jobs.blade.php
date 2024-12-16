@@ -19,9 +19,8 @@
         <x-website.job.job-filtering :countries="$countries" :categories="$categories" :job-roles="$job_roles" :min-salary="$min_salary"
             :currentCurrency="$current_currency" :max-salary="$max_salary" :experiences="$experiences" :educations="$educations" :job-types="$job_types" :total-jobs="$jobs->total()" />
 
-        <div class="job-filter-overlay"></div>
         
-        <div class="joblist-content">
+        <div class="joblist-content tw-flex tw-flex-row">
             <div class="container">
                 @if ($popularTags && count($popularTags))
                     <x-website.job.job-sorting :popular-tags="$popularTags" />
@@ -178,6 +177,8 @@
                             class="newsButton btn btn-primary px-4 py-2 m-auto">{{ __('load_more') }}</button>
                     @endif
                 </div>
+                <x-website.job.job-filtering :countries="$countries" :categories="$categories" :job-roles="$job_roles" :min-salary="$min_salary"
+                :currentCurrency="$current_currency" :max-salary="$max_salary" :experiences="$experiences" :educations="$educations" :job-types="$job_types" :total-jobs="$jobs->total()" />
             </div>
         </div>
     </form>
