@@ -1,8 +1,8 @@
-@props(['jobTypes', 'categories', 'maxSalary', 'currentCurrency'])
+{{-- @props(['jobTypes', 'categories', 'maxSalary', 'currentCurrency']) --}}
 
-<div class="container show" id="filtersModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="container show" style="display: flex; width: 30rem;" id="filtersModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div
-        class="card  md:tw-max-w-[352px] tw-mx-0  tw-my-0 tw-block">
+        class="card  md:tw-max-w-[352px] tw-mx-0  tw-my-0 tw-block" style="flex: 1;">
         <div class="modal-content tw-rounded-none tw-relative tw-min-h-screen tw-max-h-screen">
             <div class="tw-h-screen tw-overflow-x-hidden tw-overflow-y-auto tw-pb-24">
 
