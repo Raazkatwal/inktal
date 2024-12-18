@@ -133,7 +133,7 @@
         </div>
     </div>
 </div>
-<x-website.modal.filters-modal :job-types="$jobTypes" :categories="$categories" :max-salary="$maxSalary" :currentCurrency="$currentCurrency" />
+{{-- <x-website.modal.filters-modal :job-types="$jobTypes" :categories="$categories" :max-salary="$maxSalary" :currentCurrency="$currentCurrency" /> --}}
 
 @push('frontend_links')
     <link rel="stylesheet" href="{{ asset('frontend') }}/plugins/nouislider/nouislider.min.css">

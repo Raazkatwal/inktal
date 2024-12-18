@@ -21,6 +21,19 @@
 
         
         <div class="joblist-content tw-flex tw-flex-row">
+            @include('components.website.modal.filters-modal', [
+                'jobTypes' => $job_types,
+                'categories' => $categories,
+                'job-roles' => $job_roles,
+                'min-salary' => $min_salary,
+                'currentCurrency' => $current_currency,
+                'maxSalary' => $max_salary,
+                'experiences' => $experiences,
+                'educations' => $educations,
+                'job-types' => $job_types,
+                'total-jobs' => $jobs->total(),
+            ])
+
             <div class="container">
                 @if ($popularTags && count($popularTags))
                     <x-website.job.job-sorting :popular-tags="$popularTags" />
