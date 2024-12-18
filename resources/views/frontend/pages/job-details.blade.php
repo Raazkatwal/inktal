@@ -127,178 +127,111 @@
                                     </div>
                                 @endif
                             @endif
-                            <div class="tw-flex tw-items-center tw-justify-between tw-gap-4 tw-flex-col md:tw-flex-row">
-                                <div class="tw-flex tw-items-center tw-gap-2.5 tw-flex-grow">
-                                    @if ($job->company)
-                                        <a href="{{ route('website.employe.details', $job->company->user->username) }}"
-                                            class="!tw-flex-shrink-0">
-                                            <img src="{{ $job->company->getLogoUrl() }}" alt="logo" draggable="false"
-                                                class="tw-w-[68px] tw-h-[68px] tw-rounded-md object-fit-contain">
-                                        </a>
-                                    @else
-                                        <svg style="width: 50px ; height: 50px ; color: black"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                                        </svg>
-                                    @endif
-
-                                    <div class="tw-flex-grow">
-                                        <div class="post-info2">
-                                            <div class="post-main-title2">
-                                                <h1>
-                                                    {{ $job->title }}
-                                                </h1>
+                            <div class="tw-border tw-border-gray-200 tw-rounded-lg tw-shadow-md tw-bg-white tw-p-4 tw-w-full tw-max-w-[800px] tw-mx-auto">
+                                <!-- Flex Container -->
+                                <div class="tw-flex tw-items-center tw-justify-between tw-gap-16 tw-flex-col md:tw-flex-row">
+                                    <!-- Left Section: Logo & Job Info -->
+                                    <div class="tw-flex tw-items-center tw-gap-4 tw-w-full">
+                                        <!-- Job Logo -->
+                                        @if ($job->company)
+                                            <a href="{{ route('website.employe.details', $job->company->user->username) }}" class="!tw-flex-shrink-0">
+                                                <img src="{{ $job->company->getLogoUrl() }}" alt="logo" draggable="false"
+                                                    class="tw-w-[68px] tw-h-[68px] tw-rounded-md tw-object-contain tw-bg-gray-100">
+                                            </a>
+                                        @else
+                                            <div class="tw-flex-shrink-0 tw-w-[68px] tw-h-[68px] tw-rounded-md tw-bg-gray-200 tw-flex tw-items-center tw-justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="tw-w-8 tw-h-8 tw-text-gray-600">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                                </svg>
                                             </div>
-                                            <div class="tw-flex tw-flex-wrap tw-items-center tw-gap-2">
-
+                                        @endif
+                            
+                                        <!-- Job Info -->
+                                        <div class="tw-flex-grow">
+                                            <h1 class="tw-text-xl tw-font-semibold tw-text-[#212121]">{{ $job->title }}</h1>
+                                            <div class="tw-flex tw-items-center tw-gap-2 tw-mt-1">
                                                 @if ($job->company)
-                                                    <p class="tw-mb-0 tw-whitespace-nowrap tw-text-lg tw-text-[#474C54]">at
-                                                        <span>{{ $job->company->user->name }}</span>
+                                                    <p class="tw-mb-0 tw-text-sm tw-text-[#474C54]">
+                                                        at <span class="tw-font-medium">{{ $job->company->user->name }}</span>
                                                     </p>
                                                 @else
-                                                    <p class="tw-mb-0 tw-whitespace-nowrap tw-text-lg tw-text-[#474C54]">at
-                                                        <span>{{ $job->company_name }}</span>
+                                                    <p class="tw-mb-0 tw-text-sm tw-text-[#474C54]">
+                                                        at <span class="tw-font-medium">{{ $job->company_name }}</span>
                                                     </p>
                                                 @endif
-
-                                                <span
-                                                    class="tw-text-white tw-uppercase tw-text-sm tw-font-semibold tw-bg-[#0BA02C] tw-px-3 tw-py-1 tw-rounded-[3px]">
+                                                <span class="tw-text-white tw-bg-[#0BA02C] tw-text-xs tw-font-semibold tw-rounded-md tw-px-2.5 tw-py-1">
                                                     {{ $job->job_type ? $job->job_type->name : '' }}
                                                 </span>
-
+                            
                                                 @if ($job->featured)
-                                                    <span
-                                                        class="tw-text-sm tw-font-semibold tw-bg-[#FFEDED] tw-py-1 tw-px-3 tw-rounded-[52px] tw-text-[#E05151]">
+                                                    <span class="tw-text-xs tw-bg-[#FFEDED] tw-text-[#E05151] tw-font-medium tw-px-2.5 tw-py-1 tw-rounded-full">
                                                         {{ __('featured') }}
                                                     </span>
                                                 @endif
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tw-flex !tw-items-start !tw-gap-2.5">
-                                    <div>
+                            
+                                    <!-- Right Section: Bookmark & Apply Buttons -->
+                                    <div class="tw-flex tw-items-start tw-gap-2.5">
+                                        <!-- Bookmark Button -->
                                         @auth
                                             @if (auth()->user()->role == 'candidate')
                                                 <a href="{{ route('website.job.bookmark', $job->slug) }}"
-                                                    class="bg-gray-10 text-primary-500 plain-button icon-56 hoverbg-primary-50">
+                                                    class="tw-p-2 tw-rounded-full tw-bg-gray-100 tw-text-primary-500 hover:tw-bg-primary-50">
                                                     @if ($job->bookmarked)
-                                                        <x-svg.bookmark-icon width="24" height="24" fill="#0A65CC"
-                                                            stroke="#0A65CC" />
+                                                        <x-svg.bookmark-icon width="24" height="24" fill="#0A65CC" stroke="#0A65CC" />
                                                     @else
                                                         <x-svg.unmark-icon />
                                                     @endif
                                                 </a>
-                                            @else
-                                                <button type="button"
-                                                    class=" bg-gray-10 text-primary-500 plain-button icon-56 hoverbg-primary-50 no_permission">
-                                                    <x-svg.unmark-icon />
-                                                </button>
                                             @endif
                                         @else
-                                            <button type="button"
-                                                class="bg-gray-10 text-primary-500 plain-button icon-56 hoverbg-primary-50 login_required">
+                                            <button type="button" class="tw-p-2 tw-rounded-full tw-bg-gray-100 tw-text-gray-500 hover:tw-bg-gray-200 login_required">
                                                 <x-svg.unmark-icon />
                                             </button>
                                         @endauth
-                                    </div>
-                                    @if ($job->status == 'expired')
-                                        <button type="button" class="btn btn-danger btn-lg d-block">
-                                            <span class="button-content-wrapper ">
-                                                <span class="button-text">
-                                                    {{ __('expired') }}
-                                                </span>
-                                            </span>
-                                        </button>
-                                    @else
-                                        @if ($job->can_apply)
-                                            <div class="max-311">
+                            
+                                        <!-- Apply Now Button -->
+                                        @if ($job->status == 'expired')
+                                            <button type="button" class="tw-bg-red-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-md">
+                                                {{ __('expired') }}
+                                            </button>
+                                        @else
+                                            @if ($job->can_apply)
                                                 @if ($job->deadline_active)
-                                                    @auth('user')
-                                                        @if (auth()->user()->role == 'candidate')
-                                                            @if (!$job->applied)
-                                                                <button
-                                                                    onclick="applyJobb({{ $job->id }}, '{{ $job->title }}')"
-                                                                    class="btn btn-primary apply">
-                                                                    <span class="button-content-wrapper ">
-                                                                        <span class="button-icon align-icon-right"><i
-                                                                                class="ph-arrow-right"></i></span>
-                                                                        <span class="button-text">{{ __('apply_now') }}</span>
-                                                                    </span>
-                                                                </button>
-                                                            @else
-                                                                <button type="button" class="d-block btn btn-success apply">
-                                                                    <span class="button-content-wrapper ">
-                                                                        <span class="button-text">
-                                                                            {{ __('already_applied') }}
-                                                                        </span>
-                                                                    </span>
-                                                                </button>
-                                                            @endif
-                                                        @else
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-lg d-block no_permission">
-                                                                <span class="button-content-wrapper ">
-                                                                    <span class="button-icon align-icon-right"><i
-                                                                            class="ph-arrow-right"></i></span>
-                                                                    <span class="button-text">{{ __('apply_now') }}</span>
-                                                                </span>
-                                                            </button>
-                                                        @endif
-                                                    @else
-                                                        <button type="button"
-                                                            class=" d-block btn btn-primary login_required">
-                                                            <span class="button-content-wrapper ">
-                                                                <span class="button-icon align-icon-right"><i
-                                                                        class="ph-arrow-right"></i></span>
-                                                                <span class="button-text">{{ __('apply_now') }}</span>
-                                                            </span>
-                                                        </button>
-                                                    @endauth
-                                                    <span
-                                                        class="d-block rt-pt-10 text-lg-end text-start f-size-14 text-gray-700 ">
-                                                        {{ __('job_expire') }}
-                                                        <span class="text-danger-500">
-                                                            {{ $job->days_remaining }}
-                                                        </span>
+                                                    <button onclick="applyJobb({{ $job->id }}, '{{ $job->title }}')"
+                                                        class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B] tw-whitespace-nowrap">
+                                                        {{ __('apply_now') }}
+                                                    </button>
+                                                    <span class="tw-text-sm tw-text-gray-500">
+                                                        {{ __('job_expire') }} <span class="tw-text-red-500">{{ $job->days_remaining }}</span>
                                                     </span>
                                                 @else
-                                                    <button type="button" class="btn btn-danger btn-lg d-block">
-                                                        <span class="button-content-wrapper ">
-                                                            <span class="button-text">
-                                                                {{ __('expired') }}
-                                                            </span>
-                                                        </span>
+                                                    <button type="button" class="tw-bg-red-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-md tw-whitespace-nowrap ">
+                                                        {{ __('expired') }}
                                                     </button>
                                                 @endif
-                                            </div>
-                                        @else
-                                            @if ($job->apply_on == 'custom_url')
-                                                <a href="{{ $job->apply_url }}" target="_blank"
-                                                    class="btn btn-primary btn-lg d-block">
-                                                    <span class="button-content-wrapper ">
-                                                        <span class="button-icon align-icon-right"><i
-                                                                class="ph-arrow-right"></i></span>
-                                                        <span class="button-text">{{ __('apply_now') }}</span>
-                                                    </span>
-                                                </a>
                                             @else
-                                                <a href="mailto:{{ $job->apply_email }}"
-                                                    class="btn btn-primary btn-lg d-block">
-                                                    <span class="button-content-wrapper ">
-                                                        <span class="button-icon align-icon-right"><i
-                                                                class="ph-arrow-right"></i></span>
-                                                        <span class="button-text">{{ __('apply_now') }}</span>
-                                                    </span>
-                                                </a>
+                                                @if ($job->apply_on == 'custom_url')
+                                                    <a href="{{ $job->apply_url }}" target="_blank"
+                                                        class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-[#084C9B]">
+                                                        {{ __('apply_now') }}
+                                                    </a>
+                                                @else
+                                                    <a href="mailto:{{ $job->apply_email }}"
+                                                        class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-4 tw-py-2 hover:tw-bg-[#084C9B]">
+                                                        {{ __('apply_now') }}
+                                                    </a>
+                                                @endif
                                             @endif
                                         @endif
-                                    @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            
                     </div>
                 </div>
             </div>
@@ -312,318 +245,133 @@
             @endif
             @endif
             <!-- google adsense area end -->
-        <div class="container tw-pt-8">
-            <div class="row">
-                <div class="col-lg-7 rt-mb-lg-30">
-                    {{-- <div class="body-font-1 ft-wt-5 rt-mb-20">
-                        {{ __('job_description') }}
-                    </div> --}}
-                    <div class="job-desc">
-                        {!! $job->description !!}
+            <div class="container py-4">
+                <div class="row">
+                    <!-- Job Description Column -->
+                    <div class="col-lg-7 mb-4">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-3 text-primary">Job Description</h4>
+                                <div class="job-desc text-secondary">
+                                    {!! $job->description !!}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-5">
-                    <div class="p-32 border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
-                        <div class="row">
-                            <!-- google adsense area -->
-                            @if (advertisement_status('job_detailpage_ad'))
-                                @if (advertisement_status('job_detailpage_right_ad'))
-                                    @if (advertisementCode('job_detailpage_fat_ad_before_salary_section'))
-                                        <div class="container my-4">
-                                            {!! advertisementCode('job_detailpage_fat_ad_before_salary_section') !!}
-                                        </div>
-                                    @endif
-                                @endif
-                            @endif
-                            <!-- google adsense area end -->
-
-                            <div class="col-sm-6 salery tw-salery-border">
-                                <h4>{{ __('salary') }}</h4>
-
-                                @if ($job->salary_mode == 'range')
-                                    <h2>{{ getFormattedNumber($job->min_salary) }} -
-                                        {{ getFormattedNumber($job->max_salary) }} {{ currentCurrencyCode() }} </h2>
+            
+                    <!-- Job Details Sidebar -->
+                    <div class="col-lg-5">
+                        <!-- Job Overview -->
+                        <div class="p-4 border border-2 border-primary-50 rounded mb-4">
+                            <div class="row gy-3">
+                                <!-- Location or Remote Job -->
+                                @if ($job->is_remote)
+                                <div class="col-6 text-center">
+                                    <i class="ph-briefcase-lg f-size-30 text-primary"></i>
+                                    <h6 class="fw-bold mt-2">Remote Job</h6>
+                                    <p class="text-muted mb-0">Worldwide</p>
+                                </div>
                                 @else
-                                    <h6 class="tw-text-center">{{ $job->custom_salary }}</h6>
+                                <div class="col-6 text-center">
+                                    <i class="ph-map-tripod-icon f-size-30 text-primary"></i>
+                                    <h6 class="fw-bold mt-2">Location</h6>
+                                    <p class="text-muted mb-0">
+                                        {{ $job->exact_location ? $job->exact_location : $job->full_address }}
+                                    </p>
+                                </div>
                                 @endif
-                                <p>{{ $job->salary_type->name }} {{ __('based') }}</p>
-                            </div>
-                            @if ($job->is_remote)
-                                <div class="col-sm-6 job-type">
-                                    <div class="remote">
-                                        <div class="text-center tw-mb-2">
-                                            <x-svg.briefcase-lg />
-                                        </div>
-                                        <h4 class="tw-mb-[2px]">{{ __('remote_job') }}</h4>
-                                        <p class="tw-mb-0">{{ __('worldwide') }}</p>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="col-sm-6 job-type">
-                                    <div class="remote">
-                                        <div class="text-center tw-mb-2">
-                                            <x-svg.map-tripod-icon />
-                                        </div>
-                                        <h4 class="tw-mb-[2px]">{{ __('location') }}</h4>
-                                        <p class="tw-mb-0">
-                                            {{ $job->exact_location ? $job->exact_location : $job->full_address }}</p>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    @if ($job->benefits && count($job->benefits))
-                        <div class="p-32 border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
-                            <div class="body-font-1 ft-wt-5 rt-mb-32 ">{{ __('job_benefits') }}</div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="tw-flex tw-flex-wrap tw-gap-2">
-                                        @foreach ($job->benefits as $benefit)
-                                            <span
-                                                class="text-capitalize tw-rounded-md tw-bg-green-50 tw-px-2 tw-py-1 tw-text-sm tw-font-medium tw-text-green-700 tw-ring-1 tw-ring-inset tw-ring-green-600/20">
-                                                {{ $benefit->name }}
-                                            </span>
-                                        @endforeach
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    @endif
-                    <!-- google adsense area -->
-                    @if (advertisement_status('job_detailpage_ad'))
-                        @if (advertisement_status('job_detailpage_right_ad'))
-                            @if (advertisementCode('job_detailpage_fat_ad_after_jobbenefits_section'))
-                                <div class="container my-4">
-                                    {!! advertisementCode('job_detailpage_fat_ad_after_jobbenefits_section') !!}
-                                </div>
-                            @endif
+            
+                        <!-- Job Benefits -->
+                        @if ($job->benefits && count($job->benefits))
+                        <div class="p-4 border border-2 border-primary-50 rounded mb-4">
+                            <h6 class="fw-bold text-primary mb-3">Job Benefits</h6>
+                            <div class="d-flex flex-wrap gap-2">
+                                @foreach ($job->benefits as $benefit)
+                                <span class="badge bg-success text-white px-2 py-1">
+                                    {{ $benefit->name }}
+                                </span>
+                                @endforeach
+                            </div>
+                        </div>
                         @endif
-                    @endif
-                <!-- google adsense area end -->
-                    <div class="border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
-                        <div class="tw-px-8 tw-pb-6 tw-pt-8">
-                            <div class="body-font-1 ft-wt-5 rt-mb-32 ">{{ __('job_overview') }}</div>
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                    <div class="single-jSidebarWidget">
-                                        <div class="icon-thumb">
-                                            <i class="ph-calendar-blank f-size-30 text-primary-500"></i>
-                                        </div>
-                                        <div class="iconbox-content">
-                                            <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                {{ __('job_posted') }}:
-                                            </div>
-                                            <span class="d-block f-size-14 ft-wt-5 text-gray-900">
-                                                {{ Carbon\Carbon::parse($job->created_at)->diffForHumans() }}
-                                            </span>
-                                        </div>
+            
+                        <!-- Job Overview Details -->
+                        <div class="p-4 border border-2 border-primary-50 rounded mb-4">
+                            <h6 class="fw-bold text-primary mb-3">Job Overview</h6>
+                            <div class="row gy-3">
+                                <div class="col-6">
+                                    <div class="text-muted">Job Posted:</div>
+                                    <div class="fw-bold">
+                                        {{ Carbon\Carbon::parse($job->created_at)->diffForHumans() }}
                                     </div>
                                 </div>
                                 @if ($job->deadline_active)
-                                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                        <div class="single-jSidebarWidget">
-                                            <div class="icon-thumb">
-                                                <i class="ph-timer f-size-30 text-primary-500"></i>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                    {{ __('job_expire') }}:
-                                                </div>
-                                                <span class="d-block f-size-14 ft-wt-5 text-gray-900">
-                                                    {{ $job->days_remaining }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                    <div class="single-jSidebarWidget">
-                                        <div class="icon-thumb">
-                                            <i class="ph-suitcase-simple f-size-30 text-primary-500"></i>
-                                        </div>
-                                        <div class="iconbox-content">
-                                            <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                {{ __('job_type') }}</div>
-                                            <span class="d-block f-size-14 ft-wt-5 text-gray-900">
-                                                {{ $job->job_type ? $job->job_type->name : '' }}
-                                            </span>
-                                        </div>
-                                    </div>
+                                <div class="col-6">
+                                    <div class="text-muted">Expires In:</div>
+                                    <div class="fw-bold">{{ $job->days_remaining }}</div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                    <div class="single-jSidebarWidget">
-                                        <div class="icon-thumb">
-                                            <i class="ph-user f-size-30 text-primary-500"></i>
-                                        </div>
-                                        <div class="iconbox-content">
-                                            <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                {{ __('job_role') }}</div>
-                                            <span class="d-block f-size-14 ft-wt-5 text-gray-900">
-                                                {{ $job?->role?->name ?? '' }}
-                                            </span>
-                                        </div>
-                                    </div>
+                                @endif
+                                <div class="col-6">
+                                    <div class="text-muted">Job Type:</div>
+                                    <div class="fw-bold">{{ $job->job_type ? $job->job_type->name : '' }}</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-muted">Role:</div>
+                                    <div class="fw-bold">{{ $job?->role?->name ?? '' }}</div>
                                 </div>
                                 @if ($job->education)
-                                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                        <div class="single-jSidebarWidget">
-                                            <div class="icon-thumb rt-mr-17">
-                                                <i class="ph-graduation-cap f-size-30 text-primary-500"></i>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                    {{ __('education') }}</div>
-                                                <span class=d-block f-size-14 ft-wt-5 text-gray-900">
-                                                    {{ $job->education ? $job->education->name : '' }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-6">
+                                    <div class="text-muted">Education:</div>
+                                    <div class="fw-bold">{{ $job->education->name }}</div>
+                                </div>
                                 @endif
                                 @if ($job->experience)
-                                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                        <div class="single-jSidebarWidget">
-                                            <div class="icon-thumb rt-mr-17">
-                                                <i class="ph-clipboard-text f-size-30 text-primary-500"></i>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                    {{ __('experience') }}</div>
-                                                <span class=d-block f-size-14 ft-wt-5 text-gray-900">
-                                                    {{ $job->experience ? $job->experience->name : '' }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                                @if ($job->vacancies)
-                                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 rt-mb-32">
-                                        <div class="single-jSidebarWidget">
-                                            <div class="icon-thumb rt-mr-17">
-                                                <i class="ph-users f-size-30 text-primary-500"></i>
-                                            </div>
-                                            <div class="iconbox-content">
-                                                <div class="f-size-12 text-gray-500 uppercase text-uppercase rt-mb-6">
-                                                    {{ __('vacancies') }}</div>
-                                                <span class=d-block f-size-14 ft-wt-5 text-gray-900">
-                                                    {{ $job->vacancies }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-6">
+                                    <div class="text-muted">Experience:</div>
+                                    <div class="fw-bold">{{ $job->experience->name }}</div>
+                                </div>
                                 @endif
                             </div>
                         </div>
-                        <div class="tw-share-area tw-px-8 tw-pt-6 tw-pb-8">
-                            @if ($job->tags && count($job->tags))
-                                <h2 class="tw-text-[#18191C] tw-text-lg tw-font-medium tw-mb-2">{{ __('job_tags') }}:</h2>
-                                <div class="tw-flex tw-gap-2 tw-flex-wrap tw-items-center">
-                                    @foreach ($job->tags as $tag)
-                                        <a href="javascript:void(0)"
-                                            class="text-capitalize tw-rounded-md tw-bg-green-50 tw-px-2 tw-py-1 tw-text-sm tw-font-medium tw-text-green-700 tw-ring-1 tw-ring-inset tw-ring-green-600/20">
-                                            {{ $tag->name }}
-                                        </a>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
-                        <div class="tw-share-area tw-px-8 tw-pt-6 tw-pb-8">
-                            <h2 class="tw-text-[#18191C] tw-text-lg tw-font-medium tw-mb-2">{{ __('share_this_job') }}:
-                            </h2>
-
+            
+                        <!-- Share Job -->
+                        <div class="p-4 border border-2 border-primary-50 rounded mb-4">
+                            <h6 class="fw-bold text-primary mb-3">Share This Job</h6>
                             <div class="input-group mb-3">
-                            <input type="text" class="form-control" value="{{ url()->current() }}" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <span class="tw-text-primary-500 hover:tw-bg-primary-500 tw-cursor-pointer hover:tw-text-white tw-flex tw-gap-1.5 tw-items-center tw-text-base tw-font-medium tw-bg-[#E7F0FA] tw-px-4 tw-py-2 tw-rounded-[4px]"
-                                                                onclick="copyUrl('{{ url()->current() }}')" id="basic-addon2"><x-svg.link-sample-icon /></span>
+                                <input type="text" class="form-control" value="{{ url()->current() }}" readonly>
+                                <button class="btn btn-primary" onclick="copyUrl('{{ url()->current() }}')">
+                                    Copy Link
+                                </button>
                             </div>
-                            <ul class="tw-list-none tw-flex tw-flex-wrap tw-items-center tw-gap-2 tw-p-0 tw-m-0 tw-mb-6">
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'facebook') }}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-[#0A65CC] hover:tw-bg-[#0A65CC] hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                        <x-svg.new-facebook-icon />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'pinterest') }}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-[#0A65CC] hover:tw-bg-[#0A65CC] hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                        <x-svg.pinterest-icon/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'twitter') }}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-primary-500 hover:tw-bg-primary-500 hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                        <x-svg.new-twitter-icon />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'whatsapp') }}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-primary-500 hover:tw-bg-primary-500 hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                        <x-svg.whatsapp-icon />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'linkedin')}}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-primary-500 hover:tw-bg-primary-500 hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                       <x-svg.linkedin-icon/>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'mail')}}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-primary-500 hover:tw-bg-primary-500 hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                       <x-svg.mail-icon/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'telegram')}}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-primary-500 hover:tw-bg-primary-500 hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                       <x-svg.telegram-icon/>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'skype')}}')"
-                                        class="tw-inline-flex tw-bg-[#E7F0FA] tw-text-primary-500 hover:tw-bg-primary-500 hover:tw-text-white tw-rounded-[4px] tw-p-2.5">
-                                       <x-svg.skype-icon/>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div class="d-flex gap-2">
+                                <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'facebook') }}')" class="btn btn-outline-primary btn-sm">Facebook</a>
+                                <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'twitter') }}')" class="btn btn-outline-info btn-sm">Twitter</a>
+                                <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'linkedin') }}')" class="btn btn-outline-secondary btn-sm">LinkedIn</a>
+                                <a href="javascript:void(0);" onclick="openPopUp('{{ socialMediaShareLinks(url()->current(), 'whatsapp') }}')" class="btn btn-outline-success btn-sm">WhatsApp</a>
+                            </div>
                         </div>
-                    </div>
-                      <!-- google adsense area -->
-                      @if (advertisement_status('job_detailpage_ad'))
-                        @if (advertisement_status('job_detailpage_right_ad'))
-                            @if (advertisementCode('job_detailpage_fat_ad_after_share_section'))
-                                <div class="container my-4">
-                                    {!! advertisementCode('job_detailpage_fat_ad_after_share_section') !!}
-                                </div>
-                            @endif
-                        @endif
-                    @endif
-                     <!-- google adsense area end -->
-                    <div class="border border-2 border-primary-50 rt-rounded-12 rt-mb-24 lg:max-536">
-                        <div class="body-font-1 ft-wt-5 custom-p">
-                            {{ __('location') }} <br>
-                            <p class="body-font-3">{{ $job->exact_location ? $job->exact_location : $job->full_address }}
+            
+                        <!-- Location Map -->
+                        <div class="p-4 border border-2 border-primary-50 rounded">
+                            <h6 class="fw-bold text-primary mb-3">Location</h6>
+                            <p class="text-muted">
+                                {{ $job->exact_location ? $job->exact_location : $job->full_address }}
                             </p>
-                        </div>
-                        <div>
                             @php
                                 $map = $setting->default_map;
                             @endphp
-
                             @if ($map == 'google-map')
-                                <div class="map mymap" id="google-map"></div>
+                            <div id="google-map" style="height: 250px;" class="rounded"></div>
                             @else
-                                <div id="leaflet-map"></div>
+                            <div id="leaflet-map" style="height: 250px;" class="rounded"></div>
                             @endif
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+            
 
     @if (count($related_jobs))
         <div class="rt-spacer-100 rt-spacer-md-50"></div>

@@ -23,6 +23,7 @@ use Modules\Currency\Entities\Currency;
 use Modules\Language\Entities\Language;
 use Modules\Location\Entities\Country;
 use Modules\Seo\Entities\Seo;
+//use PhpOffice\PhpSpreadsheet\Style\NumberFormat\NumberFormatter;
 use Stevebauman\Location\Facades\Location;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Torann\GeoIP\Facades\GeoIP;
@@ -72,7 +73,7 @@ if (! function_exists('deleteFile')) {
 /**
  * image delete
  *
- * @param  string  $image
+ * @param  string  $images
  * @return void
  */
 if (! function_exists('deleteImage')) {
