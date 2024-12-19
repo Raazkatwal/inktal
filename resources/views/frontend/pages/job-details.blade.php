@@ -91,7 +91,7 @@
         $lat = $job->lat;
         $long = $job->long;
     @endphp
-    <div class="breadcrumbs breadcrumbs-height">
+    <div class="breadcrumbs breadcrumbs-height tw-sticky tw-top-0 tw-z-50 tw-bg-white tw-shadow-md tw-h-[70px]">
         <div class="container">
             <div class="breadcrumb-menu">
                 <h6 class="f-size-18 m-0">
@@ -119,7 +119,7 @@
         @endif
         <!-- google adsense area end -->
         <div class="container py-4">
-            <div class="row">
+            <div class="row tw-h-full tw-overflow-y-auto tw-pr-2   [scrollbar-width:none]">
                 <!-- Job Description Column -->
                 <div class="col-lg-7 mb-4">
                     <div class="row">
