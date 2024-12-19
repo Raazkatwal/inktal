@@ -221,7 +221,7 @@
                                                             @endif
                                                         @else
                                                             <button type="button"
-                                                                class="tw-p-2 tw-rounded-full tw-bg-gray-100 tw-text-gray-500 hover:tw-bg-gray-200 login_required">
+                                                                class="tw-p-2 tw-rounded-full tw-bg-gray-100 tw-text-gray-500 hover:tw-bg-gray-200 tw-border-none  login_required">
                                                                 <x-svg.unmark-icon />
                                                             </button>
                                                         @endauth
@@ -229,7 +229,7 @@
                                                         <!-- Apply Now Button -->
                                                         @if ($job->status == 'expired')
                                                             <button type="button"
-                                                                class="tw-bg-red-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-md  tw-whitespace-nowrap">
+                                                                class="tw-bg-red-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-md tw-border-none  tw-whitespace-nowrap">
                                                                 {{ __('expired') }}
                                                             </button>
                                                         @else
@@ -239,18 +239,18 @@
                                                                         @if (auth()->user()->role == 'candidate')
                                                                             <button
                                                                                 onclick="applyJobb({{ $job->id }}, '{{ $job->title }}')"
-                                                                                class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B] tw-whitespace-nowrap">
+                                                                                class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B] tw-border-none tw-whitespace-nowrap">
                                                                                 {{ __('apply_now') }}
                                                                             </button>
                                                                         @else
                                                                             <button type="button"
-                                                                                class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B] no_permission">
+                                                                                class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B] tw-border-none no_permission">
                                                                                 {{ __('apply_now') }}
                                                                             </button>
                                                                         @endif
                                                                     @else
                                                                         <button type="button"
-                                                                            class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B]  tw-whitespace-nowrap login_required">
+                                                                            class="tw-bg-[#0A65CC] tw-text-white tw-rounded-md tw-px-3 tw-py-2 hover:tw-bg-[#084C9B] tw-border-none tw-whitespace-nowrap login_required">
                                                                             {{ __('apply_now') }}
                                                                         </button>
                                                                     @endauth
@@ -316,8 +316,9 @@
                             @else
                                 <div class="col-6 text-center">
                                     <i class="ph-map-tripod-icon f-size-30 text-primary"></i>
-                                    <h6 class="fw-bold mt-2">Location</h6>
-                                    <p class="text-muted mb-0">
+                                    <h6 class="fw-bold mt-2 tw-mr-[999px]">Location</h6>
+
+                                    <p class="text-muted mb-0 tw-mr-[99px]">
                                         {{ $job->exact_location ? $job->exact_location : $job->full_address }}
                                     </p>
                                 </div>
