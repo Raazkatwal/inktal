@@ -14,7 +14,7 @@
 
 <header class="header rt-fixed-top">
     <div class="n-header">
-        <div class="n-header--top relative">
+   {{-- <div class="n-header--top relative">
             @auth('user')
                 @if (!authUser()->status)
                     <div class="alert alert-danger" role="alert">
@@ -299,7 +299,150 @@
                                         </a>
                                     </div>
                                 @endif
-                                {{-- @if ($setting->app_country_type === 'multiple_base')
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="n-header--top__right d-flex align-items-center tw-px-3">
+                        @if ($cms_setting?->footer_phone_no)
+                            <div class="contact-info xs:tw-inline-flex tw-hidden">
+                                <a class="text-gray-900" href="tel:{{ $cms_setting?->footer_phone_no }}">
+                                    <x-svg.telephone2-icon />
+                                    {{ $cms_setting?->footer_phone_no }}
+                                </a>
+                            </div>
+                        @endif
+                        @if ($setting->language_changing)
+                            <div class="dropdown">
+                                @php
+                                    $language_count = count($languages) && count($languages) > 1;
+                                    $language_count2 = count($languages);
+                                    $current_language = currentLanguage() ? currentLanguage() : loadDefaultLanguage();
+                                @endphp
+                                <button class="btn {{ $language_count ? 'dropdown-toggle' : '' }}" type="button"
+                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i
+                                        class="flag-icon {{ isset($current_language->icon) && $current_language->icon ? $current_language->icon : '' }}"></i>
+                                    {{ isset($current_language->name) && $current_language->name ? $current_language->name : '' }}
+                                </button>
+                                @if ($language_count)
+                                    <ul class="dropdown-menu mx-height-300 overflow-auto tw-p-2"
+                                        aria-labelledby="dropdownMenuButton1">
+                                        @foreach ($languages as $lang)
+                                            @if (isset($current_language->code) && $current_language->code != $lang->code)
+                                                <li id="lang-dropdown-item">
+                                                    <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
+                                                        href="{{ route('changeLanguage', $lang->code) }}">
+                                                        <i
+                                                            class="flag-icon {{ isset($lang->icon) && $lang->icon ? $lang->icon : '' }} tw-me-2.5"></i>
+                                                        {{ $lang->name }}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        @endif
+
+                    </div>
+                    <div class="mobile-menu">
+                        <div class="menu-click tw-pe-3">
+                            <button class="effect1">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
+
+                                {{-- @if (count($headerCurrencies) && $setting->currency_switcher)
+                            @php
+                                $currency_count = count($headerCurrencies) && count($headerCurrencies) > 1;
+                                $current_currency_code = currentCurrencyCode();
+                            @endphp
+                            <div class="dropdown xs:tw-inline-flex tw-hidden">
+                                <button class="btn {{ count($headerCurrencies) ? 'dropdown-toggle' : '' }}"
+                                    type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    {{ $current_currency_code }}
+                                </button>
+                                @if ($currency_count)
+                                    <ul class="dropdown-menu mx-height-300 overflow-auto tw-p-2"
+                                        aria-labelledby="dropdownMenuButton1">
+                                        @foreach ($headerCurrencies as $currency)
+                                            @if ($currency->code != $current_currency_code)
+                                                <li id="lang-dropdown-item">
+                                                    <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
+                                                        href="{{ route('changeCurrency', $currency->code) }}">
+                                                        {{ $currency->code }}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        @endif --}}
+
+                        {{-- @if ($setting->app_country_type === 'multiple_base')
+                            <form action="{{ route('website.job') }}" method="GET" id="search-form"
+                                class="mx-width-300 xs:tw-inline-flex tw-hidden">
+                                <div class="d-flex">
+                                    @php
+                                        $selected_country = session('selected_country');
+                                    @endphp
+                                    <div class="">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button" id=""
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                @if ($selected_country && selected_country())
+                                                    <i class="flag-icon {{ selected_country()->icon }}"></i>
+                                                    {{ selected_country()->name }}
+                                                @else
+                                                    {{ __('all_country') }}
+                                                @endif
+                                            </button>
+
+                                            <ul class="dropdown-menu mx-height-300 overflow-auto tw-p-2"
+                                                aria-labelledby="dropdownMenuButton1">
+                                                <li>
+                                                    <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
+                                                        href="{{ route('website.set.country') }}">
+                                                        <svg width="26" height="26" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="marginleft">
+                                                            {{ __('all_country') }}
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                @foreach ($headerCountries as $country)
+                                                    <li id="lang-dropdown-item">
+                                                        <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
+                                                            href="{{ route('website.set.country', ['country' => $country->id]) }}">
+                                                            <i class="flag-icon {{ $country->icon }}"></i>
+                                                            {{ $country->name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @endif --}}
+
+                                        {{-- @if ($setting->app_country_type === 'multiple_base')
                                     <form action="{{ route('website.job') }}" method="GET" id="search-form">
                                         <div class="tw-flex tw-w-full">
                                             @php
@@ -381,142 +524,6 @@
                                         @endif
                                     </div>
                                 @endif --}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="n-header--top__right d-flex align-items-center tw-px-3">
-                        @if ($cms_setting?->footer_phone_no)
-                            <div class="contact-info xs:tw-inline-flex tw-hidden">
-                                <a class="text-gray-900" href="tel:{{ $cms_setting?->footer_phone_no }}">
-                                    <x-svg.telephone2-icon />
-                                    {{ $cms_setting?->footer_phone_no }}
-                                </a>
-                            </div>
-                        @endif
-                        @if ($setting->language_changing)
-                            <div class="dropdown">
-                                @php
-                                    $language_count = count($languages) && count($languages) > 1;
-                                    $language_count2 = count($languages);
-                                    $current_language = currentLanguage() ? currentLanguage() : loadDefaultLanguage();
-                                @endphp
-                                <button class="btn {{ $language_count ? 'dropdown-toggle' : '' }}" type="button"
-                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i
-                                        class="flag-icon {{ isset($current_language->icon) && $current_language->icon ? $current_language->icon : '' }}"></i>
-                                    {{ isset($current_language->name) && $current_language->name ? $current_language->name : '' }}
-                                </button>
-                                @if ($language_count)
-                                    <ul class="dropdown-menu mx-height-300 overflow-auto tw-p-2"
-                                        aria-labelledby="dropdownMenuButton1">
-                                        @foreach ($languages as $lang)
-                                            @if (isset($current_language->code) && $current_language->code != $lang->code)
-                                                <li id="lang-dropdown-item">
-                                                    <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
-                                                        href="{{ route('changeLanguage', $lang->code) }}">
-                                                        <i
-                                                            class="flag-icon {{ isset($lang->icon) && $lang->icon ? $lang->icon : '' }} tw-me-2.5"></i>
-                                                        {{ $lang->name }}
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </div>
-                        @endif
-                        {{-- @if (count($headerCurrencies) && $setting->currency_switcher)
-                            @php
-                                $currency_count = count($headerCurrencies) && count($headerCurrencies) > 1;
-                                $current_currency_code = currentCurrencyCode();
-                            @endphp
-                            <div class="dropdown xs:tw-inline-flex tw-hidden">
-                                <button class="btn {{ count($headerCurrencies) ? 'dropdown-toggle' : '' }}"
-                                    type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    {{ $current_currency_code }}
-                                </button>
-                                @if ($currency_count)
-                                    <ul class="dropdown-menu mx-height-300 overflow-auto tw-p-2"
-                                        aria-labelledby="dropdownMenuButton1">
-                                        @foreach ($headerCurrencies as $currency)
-                                            @if ($currency->code != $current_currency_code)
-                                                <li id="lang-dropdown-item">
-                                                    <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
-                                                        href="{{ route('changeCurrency', $currency->code) }}">
-                                                        {{ $currency->code }}
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </div>
-                        @endif --}}
-
-                        {{-- @if ($setting->app_country_type === 'multiple_base')
-                            <form action="{{ route('website.job') }}" method="GET" id="search-form"
-                                class="mx-width-300 xs:tw-inline-flex tw-hidden">
-                                <div class="d-flex">
-                                    @php
-                                        $selected_country = session('selected_country');
-                                    @endphp
-                                    <div class="">
-                                        <div class="dropdown">
-                                            <button class="btn dropdown-toggle" type="button" id=""
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                @if ($selected_country && selected_country())
-                                                    <i class="flag-icon {{ selected_country()->icon }}"></i>
-                                                    {{ selected_country()->name }}
-                                                @else
-                                                    {{ __('all_country') }}
-                                                @endif
-                                            </button>
-
-                                            <ul class="dropdown-menu mx-height-300 overflow-auto tw-p-2"
-                                                aria-labelledby="dropdownMenuButton1">
-                                                <li>
-                                                    <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
-                                                        href="{{ route('website.set.country') }}">
-                                                        <svg width="26" height="26" fill="none"
-                                                            stroke="currentColor" viewBox="0 0 24 24"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
-                                                            </path>
-                                                        </svg>
-                                                        <span class="marginleft">
-                                                            {{ __('all_country') }}
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                @foreach ($headerCountries as $country)
-                                                    <li id="lang-dropdown-item">
-                                                        <a class="dropdown-item hover:tw-bg-[#F1F2F4] hover:tw-rounded-[4px]"
-                                                            href="{{ route('website.set.country', ['country' => $country->id]) }}">
-                                                            <i class="flag-icon {{ $country->icon }}"></i>
-                                                            {{ $country->name }}
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        @endif --}}
-                    </div>
-                    <div class="mobile-menu">
-                        <div class="menu-click tw-pe-3">
-                            <button class="effect1">
-                                <span></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- End Header top -->
         <div class="n-header--bottom">
             <div class="container position-relative">

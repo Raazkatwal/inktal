@@ -1,4 +1,3 @@
-
 @extends('frontend.layouts.app')
 @section('description')
     @php
@@ -13,22 +12,13 @@
     {{ $data->title }}
 @endsection
 @section('main')
-    <section class="hero-section-2 tw-bg-primary-500 md:tw-py-32 tw-py-16"
-    style="
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://jobi.thedevstation.com/uploads/24/01/gYRnsN9H7VweG7zRsfn8.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: 0 80%;"
-    >
+    <section class="hero-section-2 tw-bg-primary-500 md:tw-py-32 tw-py-16">
         <div class="container">
             <div class="tw-flex tw-justify-center tw-items-center">
                 <div class="tw-max-w-3xl tw-text-white tw-text-center">
-                    <!--<h1 class="tw-text-white">{!! __('no_1_job_portal_home_2') !!}</h1>-->
-                                        <h1 class="tw-text-white" style="font-size: 3rem;font-weight: 600;line-height:1.2">Advanced Hiring</h1>
-                                        <h1 class="tw-text-white" style="font-size: 3rem;font-weight: 600;line-height:1.2">Management platform</h1>
-                    <!--<p>{{ __('job_seekers_stats') }}</p>-->
-                    <p>Screen hundreds of profiles automagically with<br> your personal AI interviewer agent  </p>
-                    {{-- <form action="{{ route('website.job') }}" method="GET" id="job_search_form">
+                    <h1 class="tw-text-white">{!! __('no_1_job_portal_home_2') !!}</h1>
+                    <p>{{ __('job_seekers_stats') }}</p>
+                    <form action="{{ route('website.job') }}" method="GET" id="job_search_form">
                         <div class="jobsearchBox d-flex flex-column flex-md-row bg-gray-10 input-transparent rt-mb-24"
                             data-aos="fadeinup" data-aos-duration="400" data-aos-delay="50">
                             <div class="flex-grow-1 fromGroup has-icon">
@@ -75,9 +65,9 @@
                                     class="btn btn-primary d-block d-md-inline-block ">{{ __('find_job_now') }}</button>
                             </div>
                         </div>
-                    </form> --}}
+                    </form>
                     @if ($top_categories->count())
-                      {{-- <div class="f-size-14 banner-quciks-links" data-aos="" data-aos-duration="1000"
+                        <div class="f-size-14 banner-quciks-links" data-aos="" data-aos-duration="1000"
                             data-aos-delay="500">
                             <span class="!tw-text-gray-300">{{ __('suggestion') }}: </span>
 
@@ -89,37 +79,37 @@
                                 </a>
                                 @endif
                             @endforeach
-                        </div> --}}
+                        </div>
                     @endif
 
                 </div>
             </div>
             <div class="tw-mt-8">
-                <!--<div class="category-slider">-->
+                <div class="category-slider">
                     @php
                         $popular_categories = $popular_categories->toArray();
                         ksort($popular_categories);
                     @endphp
                     @foreach ($popular_categories as $key => $category)
                         @isset($category['slug'])
-                            <!--<div class="tw-py-2">-->
-                            <!--    <a href="{{ route('website.job.category.slug', $category['slug']) }}"-->
-                            <!--        class="!tw-bg-white tw-transition-all tw-duration-300 hover:-tw-translate-y-[2px] tw-shadow-md tw-rounded-md tw-px-4 tw-py-2.5 tw-flex tw-gap-4 tw-items-center">-->
-                            <!--        <span class="tw-text-2xl">-->
-                            <!--            <i class="{{ $category['icon'] }}"></i>-->
-                            <!--        </span>-->
-                            <!--        <div class="">-->
-                            <!--            <h4 class="tw-mb-0 tw-text-lg">-->
-                            <!--                {{ Illuminate\Support\Str::limit($category['name'], 26) }}-->
-                            <!--            </h4>-->
-                            <!--            <p class="tw-mb-0 tw-text-sm">{{ $category['jobs_count'] }} {{ __('open_positions') }}-->
-                            <!--            </p>-->
-                            <!--        </div>-->
-                            <!--    </a>-->
-                            <!--</div>-->
+                            <div class="tw-py-2">
+                                <a href="{{ route('website.job.category.slug', $category['slug']) }}"
+                                    class="!tw-bg-white tw-transition-all tw-duration-300 hover:-tw-translate-y-[2px] tw-shadow-md tw-rounded-md tw-px-4 tw-py-2.5 tw-flex tw-gap-4 tw-items-center">
+                                    <span class="tw-text-2xl">
+                                        <i class="{{ $category['icon'] }}"></i>
+                                    </span>
+                                    <div class="">
+                                        <h4 class="tw-mb-0 tw-text-lg">
+                                            {{ Illuminate\Support\Str::limit($category['name'], 26) }}
+                                        </h4>
+                                        <p class="tw-mb-0 tw-text-sm">{{ $category['jobs_count'] }} {{ __('open_positions') }}
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
                         @endisset
                     @endforeach
-                <!--</div>-->
+                </div>
             </div>
         </div>
     </section>
@@ -150,9 +140,9 @@
                             </div>
                         </div>
                         <div class="iconbox-content">
-                            <div class="body-font-2 rt-mb-12">{{ __('Automated Scheduling and Interviewing') }}</div>
+                            <div class="body-font-2 rt-mb-12">{{ __('explore_opportunities') }}</div>
                             <div class="body-font-4 text-gray-400">
-                                {{ __('Just link your job posting and automatically schedule and conduct screening interviews based on Job Descriptions and Candidate Resumes') }}
+                                {{ __('browse_through_a_diverse_range_of_job_listings_tailored_to_your_interests_and_expertise') }}
                             </div>
                         </div>
                     </div>
@@ -169,9 +159,9 @@
                             </div>
                         </div>
                         <div class="iconbox-content">
-                            <div class="body-font-2 rt-mb-12">{{ __('Comprehensive Assessments') }}</div>
+                            <div class="body-font-2 rt-mb-12">{{ __('create_your_profile') }}</div>
                             <div class="body-font-4 text-gray-400">
-                                Derive the maximum value from your screening rounds. Don't limit your screening round qualification to basic details. Fully assess the candidate's proficiency in must-have skills.
+                                {{ __('build_a_standout_profile_highlighting_your_skills_experience_and_qualifications') }}
                             </div>
                         </div>
                     </div>
@@ -188,9 +178,9 @@
                             </div>
                         </div>
                         <div class="iconbox-content">
-                            <div class="body-font-2 rt-mb-12">{{ __('High-Volume Screening') }}</div>
+                            <div class="body-font-2 rt-mb-12">{{ __('apply_with_ease') }}</div>
                             <div class="body-font-4 text-gray-400">
-                                {{ __('Screen up to 500 candidates in the same slot. Ensuring your scaling efforts are not limited by human resources') }}
+                                {{ __('effortlessly_apply_to_jobs_that_match_your_preferences_with_just_a_few_clicks') }}
                             </div>
                         </div>
                     </div>
@@ -203,9 +193,9 @@
                             </div>
                         </div>
                         <div class="iconbox-content">
-                            <div class="body-font-2 rt-mb-12">{{ __('Objective Criteria of Judgement') }}</div>
+                            <div class="body-font-2 rt-mb-12">{{ __('track_your_progress') }}</div>
                             <div class="body-font-4 text-gray-400">
-                                {{ __('Get % match scores for candidate profiles and job requirements to prioritize the order of interviews eliminating bias and randomness in the process') }}
+                                {{ __('stay_informed_on_your_applications_and_manage_your_job_seeking_journey_effectively') }}
                             </div>
                         </div>
                     </div>

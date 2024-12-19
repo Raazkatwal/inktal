@@ -45,6 +45,26 @@
                             </span>
                         </a>
                         <hr>
+
+
+                        {{-- Shortlisted Candidates Start --}}
+                        <section class="short-listed-candidates">
+                            <div class="wrap">
+                                <img src="{{asset('public/backend/image/aibot.gif')}}" style="width: 5rem" alt="">
+
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Ashim Rai</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </section>
+
+                        {{-- Shortlisted Candidates End --}}
+
                         <form id="form" action="{{ route('company.job.promote', $jobCreated->id) }}"
                             method="POST">
                             @csrf

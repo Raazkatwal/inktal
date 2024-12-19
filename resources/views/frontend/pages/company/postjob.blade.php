@@ -296,8 +296,16 @@
                                                 <div class="col-12 mt-4">
                                                     @php
                                                         $session_location = session()->get('location');
-                                                        $session_country = $session_location && array_key_exists('country', $session_location) ? $session_location['country'] : '-';
-                                                        $session_exact_location = $session_location && array_key_exists('exact_location', $session_location) ? $session_location['exact_location'] : '-';
+                                                        $session_country =
+                                                            $session_location &&
+                                                            array_key_exists('country', $session_location)
+                                                                ? $session_location['country']
+                                                                : '-';
+                                                        $session_exact_location =
+                                                            $session_location &&
+                                                            array_key_exists('exact_location', $session_location)
+                                                                ? $session_location['exact_location']
+                                                                : '-';
                                                     @endphp
                                                     <div class="card-footer row mt-4 border-0">
                                                         <span>
@@ -386,10 +394,48 @@
                                 @enderror
                             </div>
                             <div class="post-job-item rt-mb-32 tw-w-full tw-overflow-hidden">
-                                <h4 class="f-size-18 ft-wt-5 tw-mb-3 lh-1">
-                                    {{ __('job_description') }}
-                                    <span class="form-label-required text-danger">*</span>
-                                </h4>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                    <h4 class="f-size-18 ft-wt-5 tw-mb-3 lh-1">
+                                        {{ __('job_description') }}
+                                        <span class="form-label-required text-danger">*</span>
+                                    </h4>
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <img src="{{asset('public/backend/image/aibot.gif')}}" style="width: 5rem" alt="">
+                                        <button class="btn btn-primary d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                        <svg style="width: 1rem" xmlns="http://www.w3.org/2000/svg" class="ionicon" fill="white" viewBox="0 0 512 512"><rect fill="white" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" x="280.48" y="122.9" width="63.03" height="378.2" rx="31.52" transform="rotate(-45 312.002 311.994)"/><path d="M178.38 178.38a31.64 31.64 0 000 44.75L223.25 268 268 223.25l-44.87-44.87a31.64 31.64 0 00-44.75 0z"/><path stroke="white" stroke-miterlimit="10" stroke-width="32" stroke-linecap="round" d="M48 192h48M90.18 90.18l33.94 33.94M192 48v48M293.82 90.18l-33.94 33.94M124.12 259.88l-33.94 33.94"/></svg>
+                                        Ai generate</button>
+                                    </div>
+                                </div>
+
+                                {{-- Offcanvas Ai generate --}}
+                                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                                    aria-labelledby="offcanvasRightLabel">
+                                    <div class="offcanvas-header">
+                                        <h5 class="offcanvas-title" id="offcanvasRightLabel">
+                                        <img src="{{asset('public/backend/image/aibot.gif')}}" style="width: 5rem" alt="">
+                                            Generate Job Description</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <div action="">
+                                            <label class="mb-2" for="generateTItle">Job Title</label>
+                                            <textarea class="w-100 rounded-2 border" placeholder="Job Title" name="" id="generateTItle"  rows="1"></textarea>
+
+                                            <label class="mt-3 mb-2" for="generateTItle">Job Description</label>
+                                            <textarea class="w-100 rounded-2 border" placeholder="Generate job description" name="" id="generateTItle"  rows="6"></textarea>
+
+                                            <button class="btn btn-primary d-flex align-items-center gap-2 mt-4" type="button" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                            <svg style="width: 1rem" xmlns="http://www.w3.org/2000/svg" class="ionicon" fill="white" viewBox="0 0 512 512"><rect fill="white" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" x="280.48" y="122.9" width="63.03" height="378.2" rx="31.52" transform="rotate(-45 312.002 311.994)"/><path d="M178.38 178.38a31.64 31.64 0 000 44.75L223.25 268 268 223.25l-44.87-44.87a31.64 31.64 0 00-44.75 0z"/><path stroke="white" stroke-miterlimit="10" stroke-width="32" stroke-linecap="round" d="M48 192h48M90.18 90.18l33.94 33.94M192 48v48M293.82 90.18l-33.94 33.94M124.12 259.88l-33.94 33.94"/></svg>
+                                            Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- Offcanvas Ai generate End --}}
+
                                 <div class="col-md-12">
                                     <textarea id="image_ckeditorx" class="form-control @error('description') is-invalid @enderror" name="description">{{ old('description') }}
                                     </textarea>
@@ -457,7 +503,8 @@
                                     </div>
                                     <div x-show="isAddingNewQuestion == false" class="q-select">
                                         <select id="questionSelect" multiple="multiple" x-ref="select"
-                                            data-placeholder="Select Questions" name="companyQuestions[]" class="select2-taggable form-control">
+                                            data-placeholder="Select Questions" name="companyQuestions[]"
+                                            class="select2-taggable form-control">
                                             <option></option>
                                             @foreach ($questions as $question)
                                                 <option value="{{ $question->id }}"> {{ $question->title }}
@@ -775,7 +822,7 @@
         </script>
         @if (app()->getLocale() == 'ar')
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ar.min.js
-                                                "></script>
+                                                            "></script>
         @endif
         @include('map::set-leafletmap')
         <script>
